@@ -11,15 +11,29 @@ function alpha(a, b) {
   return b["Name"] - a["Name"];
 }
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function getPopulation(d) {
   return d.population;
 }
 
+function sumPopulation(d) {
+  var sum = 0;
+
+  for (county in d.children) {
+    sum += d.children[county].population;
+  }
+  
+  return sum;
+}
+
 function getText(d) {
   if (d.parent.name != "states") {
-    return d.name + ", " + d.parent.name + ": " + d.population;
+    return d.name + ", " + d.parent.name + ": " + numberWithCommas(d.population);
   } else {
-    return d.name;
+    return d.name + ": " + numberWithCommas(sumPopulation(d));
   }
 }
 
