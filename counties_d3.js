@@ -43,7 +43,7 @@ d3.json("data/Gaz_counties_national.json", function(error, root) {
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height * .52 + ")");;
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
   
   sunburst = d3.layout.partition()
                       .sort(alpha)
@@ -80,5 +80,4 @@ d3.json("data/Gaz_counties_national.json", function(error, root) {
         .on("mouseleave", function(d) {
             d3.select("#tooltip").remove();
         });
-      //.style("fill-rule", "evenodd");
 });
